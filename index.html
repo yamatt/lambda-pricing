@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Lambda Pricing Calculator</title>
+        <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <div class="pure-g">
+            <div class="pure-u-1-5"></div>
+            <div class="pure-u-3-5">
+                <h1>Lambda Pricing Calculator</h1>
+                <form class="pure-form pure-form-stacked" data-freetier="400000" data-computeprice="0.00001667" oninput="result.value=calculate(this)">
+                    <fieldset>
+                        <legend>Calculate the cost of running a lambda over time. All prices are calculated in US East and in <abbr title="United States Dollar">USD</abbr>.</legend>
+
+                        <label for="memory">Memory (MB)</label>
+                        <input id="memory" type="range" name="range" autocomplete="off" value="128" min="128" step="64" max="3008" data-ratio="0.1" oninput="memory_display.value=this.value">
+                        <output name="memory_display">128</output>
+                        <span class="pure-form-message">How much memory the lambda takes up in Mega-bytes (MB)</span>
+
+                        <label for="runtime">Running Time</label>
+                        <input id="runtime" type="number" value="3.0" step="0.1" min="0" data-ratio="0.1">
+                        <span class="pure-form-message">How long the lambda runs for in seconds</span>
+
+                        <label for="runspm">Runs per month</label>
+                        <input id="runspm" type="number" value="100" step="1" min="1">
+                        <span class="pure-form-message">Number of times the lambda is run in a month</span>
+
+                        <label for="free" class="pure-checkbox">
+                            <input id="free" type="checkbox" checked="checked"> Include free tier
+                        </label>
+                        <span class="pure-form-message">Whether to include the free tier</span>
+                    </fieldset>
+                    <h2>It will cost</h2>
+                    <output for="memory runtime runspm free" name="result" style="font-size: 4em"></output>
+                </form>
+            </div>
+        </div>
+        <script type="text/javascript" src="calc.js"></script>
+    </body>
+</html>
