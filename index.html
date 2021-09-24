@@ -12,10 +12,9 @@
             <div class="pure-u-1-5"></div>
             <div class="pure-u-3-5">
                 <h1>Lambda Pricing Calculator</h1>
+                <h2>Calculate the cost of running a lambda over time.</h2>
                 <form class="pure-form pure-form-stacked" data-freetier="400000" data-computeprice="0.00001667" oninput="result.value=calculate(this)">
-                    <fieldset>
-                        <legend>Calculate the cost of running a lambda over time. All prices are calculated in US East and in <abbr title="United States Dollar">USD</abbr>.</legend>
-
+                  <header>All prices are calculated in US East and in <abbr title="United States Dollar">USD</abbr>.</header>
                         <label for="memory">Memory (MB)</label>
                         <input id="memory" type="range" name="range" autocomplete="off" value="128" min="128" step="64" max="3008" data-ratio="0.1" oninput="memory_display.value=this.value">
                         <output name="memory_display">128</output>
@@ -33,10 +32,10 @@
                             <input id="free" type="checkbox" checked="checked"> Include free tier
                         </label>
                         <span class="pure-form-message">Whether to include the free tier</span>
-                    </fieldset>
-                    <h2>It will cost</h2>
-                    <output for="memory runtime runspm free" name="result" style="font-size: 4em"></output>
                 </form>
+                <h2>It will cost</h2>
+                <output for="memory runtime runspm free" name="result" style="font-size: 4em"></output>
+                <p>Per month</p>
             </div>
         </div>
         <script type="text/javascript" src="calc.js"></script>
