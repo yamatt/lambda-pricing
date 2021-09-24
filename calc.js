@@ -2,8 +2,8 @@ const calcform_el = document.querySelector("#calc");
 const calcoutput_el = document.querySelector("#outputvalue");
 const timeunit_el = document.querySelector("#timeunit");
 
-calcform_el.addEventListener("input", (form) => {
-  calcoutput_el.value = calculate(form);
+calcform_el.addEventListener("input", (e) => {
+  calcoutput_el.value = calculate(e.target);
 })
 
 function calculate(form) {
