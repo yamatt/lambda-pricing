@@ -1,8 +1,16 @@
+const calcform_el = document.querySelector("#calc");
+const calcoutput_el = document.querySelector("#outputvalue");
+const timeunit_el = document.querySelector("#timeunit");
+
+calcform_el.addEventListener("input", (form) => {
+  calcoutput_el.value = calculate(form);
+})
+
 function calculate(form) {
-    var run_lengthpm = form.runtime.value * form.runspm.value;
+    var run_lengthp = form.runtime.value * form.runsp.value * form.timeunit.value;
     var gb = form.memory.value / 1024;
 
-    var total_compute = run_lengthpm * gb; // GB-s
+    var total_compute = run_lengthp * gb; // GB-s
 
     if (form.free.checked) {
         total_compute -= form.dataset.freetier;
