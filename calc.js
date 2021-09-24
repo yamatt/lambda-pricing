@@ -2,7 +2,11 @@ const calcform_el = document.querySelector("#calc");
 
 calcform_el.addEventListener("input", (e) => {
   e.currentTarget.result.value = calculate(e.currentTarget);
-})
+});
+
+calcform_el.addEventListener("blur", (e) => {
+  const querystring = new URLSearchParams(new FormData(e.target)).toString();
+});
 
 function calculate(form) {
     var run_lengthp = form.runtime.value * form.runsp.value * form.timeunit.value;
