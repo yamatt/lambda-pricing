@@ -21,7 +21,7 @@ calcform_el.addEventListener("input", (e) => {
 calcform_el.querySelectorAll("input, select").forEach(function(el) {
   el.addEventListener("blur", (e) => {
     const querystring = new URLSearchParams(new FormData(calcform_el)).toString();
-    history.pushState({}, null, "?" + querystring.toString())
+    history.replaceState({}, null, "?" + querystring.toString())
   });
 })
 
