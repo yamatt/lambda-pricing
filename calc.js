@@ -16,16 +16,19 @@ window.addEventListener("load", (e) => {
   else {
     calcform_el.free.checked = false
   }
-  calcform_el.result.value = calculate(calcform_el);
+  calcform_el.result.value = format(calculate_price(calcform_el));
 });
 
 calcform_el.addEventListener("input", (e) => {
-  e.currentTarget.result.value = calculate(e.currentTarget);
+  // update result each time values are changed
+  e.currentTarget.result.value = format(calculate_price(e.currentTarget));
+
+  // update url when values are changed
   const querystring = new URLSearchParams(new FormData(calcform_el)).toString();
   history.replaceState({}, null, "?" + querystring.toString())
 });
 
-function calculate(form) {
+function calculate_price(form) {
     var run_lengthp = form.runtime.value * form.runsp.value * form.timeunit.value;
     var gb = form.memory.value / 1024;
 
@@ -35,13 +38,15 @@ function calculate(form) {
         total_compute -= form.dataset.freetier;
     }
 
-    if (total_compute < 0.01) {
-        return "Nothing"
-    }
+    total_price = total_compute * form.dataset.computeprice
 
-    return format(total_compute * form.dataset.computeprice);
+    return total_price;
 }
 
 function format(price) {
+    if (price < 0.01) {
+        return "Nothing"
+    }
+
     return "$" + price.toFixed(2);
 }
