@@ -1,7 +1,6 @@
 const calcform_el = document.querySelector("#calc");
 
-calcform_el.addEventListener("load", (e) => {
-  console.log("not run")
+window.addEventListener("load", (e) => {
   const querystring = new URLSearchParams(window.location.search);
   for (let key in querystring) {
     calcform_el.elements[key].value = querystring.get(key)
