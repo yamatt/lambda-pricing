@@ -4,9 +4,14 @@ calcform_el.addEventListener("input", (e) => {
   e.currentTarget.result.value = calculate(e.currentTarget);
 });
 
-calcform_el.addEventListener("blur", (e) => {
-  const querystring = new URLSearchParams(new FormData(e.target)).toString();
-});
+calcform_el.querySelectorAll("input, select").forEach(function(el) {
+  el.addEventListener("blur", (e) => {
+    const querystring = new URLSearchParams(new FormData(calcform_el)).toString();
+    console.log(querystring)
+  });
+})
+
+calcform_el.
 
 function calculate(form) {
     var run_lengthp = form.runtime.value * form.runsp.value * form.timeunit.value;
