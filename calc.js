@@ -11,8 +11,6 @@ calcform_el.querySelectorAll("input, select").forEach(function(el) {
   });
 })
 
-calcform_el.
-
 function calculate(form) {
     var run_lengthp = form.runtime.value * form.runsp.value * form.timeunit.value;
     var gb = form.memory.value / 1024;
