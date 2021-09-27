@@ -16,7 +16,7 @@ window.addEventListener("load", (e) => {
   else {
     calcform_el.free.checked = false
   }
-  calculate(calcform_el);
+  calcform_el.result.value = calculate(calcform_el);
 });
 
 calcform_el.addEventListener("input", (e) => {
