@@ -3,7 +3,7 @@ const calcform_el = document.querySelector("#calc");
 window.addEventListener("load", (e) => {
   const querystring = new URLSearchParams(window.location.search);
 
-  querystring.forEach((e) => {
+  querystring.forEach((key) => {
     console.log(key);
     calcform_el.elements[key].value = querystring.get(key)
   })
