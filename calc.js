@@ -1,11 +1,14 @@
 const calcform_el = document.querySelector("#calc");
 
+// update values from querystring once page loads
 window.addEventListener("load", (e) => {
   const querystring = new URLSearchParams(window.location.search);
 
   querystring.forEach((value, key) => {
-    calcform_el[key].value = value
+    calcform_el[key].value = value;
   })
+
+  calcform_el.memory_display.value=calcform_el.memory.value;
 
   if (querystring.has("free")) {
     calcform_el.free.checked = true
@@ -18,14 +21,9 @@ window.addEventListener("load", (e) => {
 
 calcform_el.addEventListener("input", (e) => {
   e.currentTarget.result.value = calculate(e.currentTarget);
+  const querystring = new URLSearchParams(new FormData(calcform_el)).toString();
+  history.replaceState({}, null, "?" + querystring.toString())
 });
-
-calcform_el.querySelectorAll("input, select").forEach((el) => {
-  el.addEventListener("blur", (e) => {
-    const querystring = new URLSearchParams(new FormData(calcform_el)).toString();
-    history.replaceState({}, null, "?" + querystring.toString())
-  });
-})
 
 function calculate(form) {
     var run_lengthp = form.runtime.value * form.runsp.value * form.timeunit.value;
