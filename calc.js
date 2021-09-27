@@ -3,10 +3,10 @@ const calcform_el = document.querySelector("#calc");
 window.addEventListener("load", (e) => {
   const querystring = new URLSearchParams(window.location.search);
 
-  querystring.forEach(key) {
+  querystring.forEach((e) => {
     console.log(key);
     calcform_el.elements[key].value = querystring.get(key)
-  }
+  })
 
   if (querystring.has("free")) {
     calcform_el.free.checked = true
