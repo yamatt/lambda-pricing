@@ -35,7 +35,7 @@ function calculate(form) {
         total_compute -= form.dataset.freetier;
     }
 
-    if (total_compute <= 0) {
+    if (total_compute < 0.01) {
         return "Nothing"
     }
 
