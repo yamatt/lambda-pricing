@@ -5,7 +5,7 @@ window.addEventListener("load", (e) => {
 
   querystring.forEach((key) => {
     console.log(key);
-    calcform_el.elements[key].value = querystring.get(key)
+    calcform_el[key].value = querystring.get(key)
   })
 
   if (querystring.has("free")) {
