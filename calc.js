@@ -38,7 +38,7 @@ function calculate_price(form) {
         total_compute -= form.dataset.freetier;
     }
 
-    total_price = total_compute * form.region.computeprice;
+    total_price = total_compute * form.region.value;
 
     return total_price;
 }
